@@ -20,4 +20,5 @@ from reviews import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/reviews', views.PostList.as_view()),
+    path('api/reviews/<int:pk>/vote', views.VoteCreate.as_view()),
 ]

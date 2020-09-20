@@ -27,6 +27,6 @@ class VoteCreate(generics.CreateAPIView):
         return Vote.objects.filter(voter=user, post=post)
 
     def perform_create(self, serializer):
-        if self.get_queryset().exists:
+        if self.get_queryset().exists():
             raise ValidationError('You have already voted for this post!')
         serializer.save(voter=self.request.user, post=Post.objects.get(pk=self.kwargs['pk']))
